@@ -8,7 +8,8 @@ class Movie(models.Model):
     movieTitle=models.CharField(max_length=255)
     movieDate=models.DateField()
     movieTime=models.DateTimeField()
-    movieDescription=models.CharField(max_length=255)
+    movieDescription=models.TextField()
+    movieRating=models.CharField(max_length=225)
 
 
     def __str__(self):
@@ -34,11 +35,10 @@ class Showing(models.Model):
 #--The two class above should be correct but please update if incorrected--#
 
 
-class Customers(models.Model):
+class Customer(models.Model):
     customereName=models.CharField(max_length=255)
     customerEmail=models.EmailField(max_length=255,unique=True)
     customerPhone=models.IntegerField()
-    ticketId=models.ForeignKey(Movie, on_delete=models.DO_NOTHING)
     
 
     def __str__(self):
@@ -46,18 +46,16 @@ class Customers(models.Model):
 
 
     class Meta:
-        db_table='customers'
+        db_table='customer'
 
 
 
-class Tickets(models.Model):
+class Ticket(models.Model):
     ticketPurchaseDate=models.DateField()
     ticketPurchaseTime=models.DateTimeField()
-    ticketId=models.ForeignKey(Movie, on_delete=models.DO_NOTHING)
-    ticketCustomerId=models.ForeignKey(Customers, on_delete=models.DO_NOTHING)
-    ticketPurchasePrice=models.DecimalField(..., max_digits=19, decimal_places=2)
-
-    
+    ticketPurchasePrice=models.DecimalField(max_digits=19, decimal_places=2)
+    showingId=models.ForeignKey(Showing, on_delete=models.DO_NOTHING)
+    customerId=models.ForeignKey(Customer, on_delete=models.DO_NOTHING)   
 
 
     def __str__(self):
@@ -65,7 +63,7 @@ class Tickets(models.Model):
 
 
     class Meta:
-        db_table='tickets'
+        db_table='ticket'
 
 
 
