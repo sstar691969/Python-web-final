@@ -78,11 +78,11 @@ WSGI_APPLICATION = 'bluemouse.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': config('DB_NAME'),
-        'USER': config('DB_USER'),
+        'NAME': config('bluemousedb'),
+        'USER': config('postgres'),
         'PASSWORD': config('DB_PASSWORD'),
-        'HOST': config('DB_HOST'),
-        'PORT': config('DB_PORT'),
+        'HOST': config('localhost'),
+        'PORT': config('5433'),
     }
 }
 
