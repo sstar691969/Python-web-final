@@ -1,12 +1,15 @@
+from math import prod
 from django.shortcuts import render, get_object_or_404
+from django.contrib.auth.decorators import login_required
 from .models import Movie, Customer, Showing, Ticket
 from django.urls import reverse_lazy
-from .forms import MovieForm
+from .forms import CustomerForm, MovieForm, ShowingForm, TicketForm
 
 # Create your views here.
 def index(request):
   return render(request, 'bluemouseapp/index.html')
 
+@login_required
 def newMovie(request):
   form=MovieForm
 
@@ -19,3 +22,31 @@ def newMovie(request):
   else:
     form=MovieForm()
   return render(request, 'bluemouseapp/newmovie.html', {'form': form})
+
+@login_required
+def newCustomer(request):
+  form=CustomerForm
+
+  if request.method=='POST':
+    form=CustomerForm(request.POST)
+    if form.is_valid():
+      post=form.save(commit=True)
+      post.save()
+      form=CustomerForm()
+  else:
+    form=CustomerForm()
+  return render(request, 'bluemouseapp/newcustomer.html', {'form': form})
+
+@login_required
+def newShowing(request):
+  form=ShowingForm
+
+  if request.method=='POST':
+    form=ShowingForm(request.POST)
+    if form.is_valid():
+      post=form.save(commit=True)
+      post.save()
+      form=ShowingForm()
+  else:
+    form=ShowingForm()
+  return render(request, 'bluemouseapp/newshowing.html', {'form': form})

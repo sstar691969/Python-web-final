@@ -15,3 +15,8 @@ class CustomerForm(forms.ModelForm):
     class Meta:
         model=Customer
         fields='__all__'
+
+class ShowingForm(forms.ModelForm):
+    class Meta:
+        model=Customer
+        fields='__all__'
