@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2>Add Movie</h2>
+<table class='table'>
+    <form method="Post", class="post=form">{% csrf_token %}
+        {{form.as_table}}
+</table>
+<button type="submit" class="save btn btn_default">Save</button>
+</form>
+
+{% endblock %}
