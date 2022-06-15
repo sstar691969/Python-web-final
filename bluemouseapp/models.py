@@ -6,8 +6,6 @@ from django.contrib.auth.models import User
 # Create your models here.
 class Movie(models.Model):
     movieTitle=models.CharField(max_length=255)
-    movieDate=models.DateField()
-    movieTime=models.DateTimeField()
     movieDescription=models.TextField()
     movieRating=models.CharField(max_length=225)
 
@@ -36,7 +34,7 @@ class Showing(models.Model):
 
 
 class Customer(models.Model):
-    customereName=models.CharField(max_length=255)
+    customerName=models.CharField(max_length=255)
     customerEmail=models.EmailField(max_length=255,unique=True)
     customerPhone=models.IntegerField()
     
