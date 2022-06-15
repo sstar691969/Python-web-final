@@ -1,13 +1,20 @@
+from django.conf import settings
 from math import prod
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .models import Movie, Customer, Showing, Ticket
 from django.urls import reverse_lazy
 from .forms import CustomerForm, MovieForm, ShowingForm, TicketForm
-
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 def index(request):
   return render(request, 'bluemouseapp/index.html')
+
+def loginmessage(request):
+    return render(request, 'bluemouseapp/loginmessage.html')
+
+def logoutmessage(request):
+    return render(request, 'bluemouseapp/logoutmessage.html')
 
 @login_required
 def newMovie(request):
