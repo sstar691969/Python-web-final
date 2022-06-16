@@ -64,7 +64,7 @@ def buyTicket(request):
 
   if request.method=='POST':
     form=TicketForm(request.POST)
-    if form.is_valid() and Ticket.objects.count()<205:
+    if form.is_valid():
       post=form.save(commit=True)
       post.save()
       form=TicketForm()
