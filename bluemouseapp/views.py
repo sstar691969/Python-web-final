@@ -57,3 +57,17 @@ def newShowing(request):
   else:
     form=ShowingForm()
   return render(request, 'bluemouseapp/newshowing.html', {'form': form})
+
+@login_required
+def buyTicket(request):
+  form=TicketForm
+
+  if request.method=='POST':
+    form=TicketForm(request.POST)
+    if form.is_valid() and Ticket.objects.count()<205:
+      post=form.save(commit=True)
+      post.save()
+      form=TicketForm()
+  else:
+    form=TicketForm()
+  return render(request, 'bluemouseapp/buyticket.html', {'form': form})

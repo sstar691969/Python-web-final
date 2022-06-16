@@ -1,5 +1,3 @@
-
-
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -40,7 +38,7 @@ class Customer(models.Model):
     
 
     def __str__(self):
-        return self.customereName
+        return self.customerName
 
 
     class Meta:
@@ -63,12 +61,3 @@ class Ticket(models.Model):
     class Meta:
         db_table='ticket'
 
-
-
-    
-    
-#-- Models Customers and Tickets attributes are not complete 
-
-        
-    
-# Create your models here.

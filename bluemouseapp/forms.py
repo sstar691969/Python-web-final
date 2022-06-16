@@ -1,5 +1,5 @@
 from django import forms
-from .models import Movie, Ticket, Customer
+from .models import Movie, Showing, Ticket, Customer
 
 class MovieForm(forms.ModelForm):
     class Meta:
@@ -18,5 +18,5 @@ class CustomerForm(forms.ModelForm):
 
 class ShowingForm(forms.ModelForm):
     class Meta:
-        model=Customer
+        model=Showing
         fields='__all__'
