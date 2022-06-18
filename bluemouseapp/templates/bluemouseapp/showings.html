@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2>Showings</h2>
+<ul>
+  {% for s in showing_list %}
+  <li><a href="{% url 'showingdetail' id=s.id %}">{{ s.showingTime }}</a></li>
+  {% endfor %}
+</ul>
+
+{% endblock %}
