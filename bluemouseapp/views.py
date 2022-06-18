@@ -10,6 +10,30 @@ from django.contrib.auth.decorators import login_required
 def index(request):
   return render(request, 'bluemouseapp/index.html')
 
+def movies (request):
+  movie_list=Movie.objects.all()
+  return render(request, 'bluemouseapp/movies.html', {'movie_list': movie_list})
+
+def moviedetail (request, id):
+  movie=get_object_or_404(Movie, pk=id)
+  return render(request, 'bluemouseapp/moviedetail.html', {'movie': movie})
+
+def customers (request):
+  showing_list=Customer.objects.all() 
+  return render(request, 'bluemouseapp/customers.html', {'customer_list': showing_list})
+
+def customerdetail (request, id):
+  customer=get_object_or_404(Customer, pk=id)
+  return render(request, 'bluemouseapp/customerdetail.html', {'customer': customer})
+
+def showings (request):
+  showing_list=Showing.objects.all() 
+  return render(request, 'bluemouseapp/showings.html', {'showing_list': showing_list})
+
+def showingdetail (request, id):
+  showing=get_object_or_404(Showing, pk=id)
+  return render(request, 'bluemouseapp/showingdetail.html', {'showing': showing})
+
 def loginmessage(request):
     return render(request, 'bluemouseapp/loginmessage.html')
 
